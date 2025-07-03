@@ -16,6 +16,7 @@ function setupStaticEventListeners() {
   setupSmoothScroll();
   setupContentRevealObserver();
   setupReservationForm();
+  setupNavbarSectionObserver(); // Initial observer setup
 }
 
 /**
@@ -36,6 +37,9 @@ async function loadDynamicContent() {
     // Setup listeners for the newly created dynamic content
     setupMenuFilter();
     setupVideoLinks();
+
+    // Re-initialize navbar section observer after dynamic content is loaded
+    setupNavbarSectionObserver();
   } catch (error) {
     console.error("Failed to load dynamic content:", error);
     // In a real app, display a user-friendly error message
@@ -129,8 +133,20 @@ function setupNavbar() {
       }
     });
   });
+}
 
+// Setup or re-setup the IntersectionObserver for navbar section highlighting
+function setupNavbarSectionObserver() {
+  const navbar = document.querySelector(".navbar");
+  const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".content-section, .hero");
+
+  // Disconnect any previous observers by storing it on window (optional, for robustness)
+  if (window._navbarSectionObserver) {
+    window._navbarSectionObserver.disconnect();
+  }
+
+  // IntersectionObserver for smooth transitions
   const sectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -148,6 +164,33 @@ function setupNavbar() {
   sections.forEach((section) => {
     if (section.id) sectionObserver.observe(section);
   });
+  window._navbarSectionObserver = sectionObserver;
+
+  // Fallback: scroll event to always highlight the closest section
+  window.addEventListener("scroll", highlightClosestSection, { passive: true });
+
+  function highlightClosestSection() {
+    const scrollY = window.scrollY + navbar.offsetHeight + 2; // +2 for margin
+    let closestSection = null;
+    let minDistance = Infinity;
+    sections.forEach((section) => {
+      if (!section.id) return;
+      const rect = section.getBoundingClientRect();
+      const sectionTop = window.scrollY + rect.top;
+      const distance = Math.abs(scrollY - sectionTop);
+      if (distance < minDistance && scrollY >= sectionTop - 10) {
+        minDistance = distance;
+        closestSection = section;
+      }
+    });
+    if (closestSection) {
+      navLinks.forEach((l) => l.classList.remove("active"));
+      const link = document.querySelector(
+        `.nav-link[href="#${closestSection.id}"]`
+      );
+      if (link) link.classList.add("active");
+    }
+  }
 }
 
 function setupSmoothScroll() {
