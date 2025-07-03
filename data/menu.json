@@ -1,19 +1,19 @@
 [
   {
     "category": "non-veg",
-    "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/fd50852cc428bccf67fede7add80cb4c-removebg-preview.png?w=600&q=80",
+    "imageSrc": "./images/muttonbiryani.jpg?w=600&q=80",
     "altText": "A plate of Mutton Biryani with a boiled egg",
     "name": "Mutton Biryani",
     "description": "Finest delicacy of dum cooked aromatic rice with tender pieces of mutton.",
     "price": "₹240"
   },
   {
-    "category": "specials",
-    "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/ext-mutton.png?w=600&q=80",
+    "category": "upcoming",
+    "imageSrc": "./images/muttonraanbiryani.jpg?w=600&q=80",
     "altText": "Classic Chicken Biryani served in a bowl",
-    "name": "Mutton Naan Biryani",
-    "description": "Upcoming",
-    "price": "₹1400"
+    "name": "Mutton Raan Biryani",
+    "description": "A royal dish featuring tender mutton leg cooked with fragrant rice and spices.",
+    "price": "Upcoming"
   },
   {
     "category": "non-veg",
@@ -25,32 +25,32 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/fd50852cc428bccf67fede7add80cb4c-removebg-preview-2.png?w=600&q=80",
-    "altText": "Vegetable Biryani with paneer and mixed vegetables",
+    "imageSrc": "./images/fishbiryani.jpg?w=600&q=80",
+    "altText": "Fish Biryani with boneless fish and fragrant rice",
     "name": "Fish Biryani",
     "description": "Boneless fish layered with fragrant, smoky rice.",
-    "price": "₹320"
+    "price": "₹150"
   },
   {
-    "category": "non-veg",
-    "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/fd50852cc428bccf67fede7add80cb4c-removebg-preview.png?w=600&q=80",
-    "altText": "Smoky Fish Tikka Biryani",
+    "category": "upcoming",
+    "imageSrc": "./images/prawnsbiryani.jpg?w=600&q=80",
+    "altText": "Smoky Prawns Biryani",
     "name": "Prawns Biryani",
-    "description": "Boneless fish tikka layered with fragrant, smoky rice.",
-    "price": "₹480"
+    "description": "Boneless prawns tikka layered with fragrant, smoky rice.",
+    "price": "Upcoming"
   },
   {
     "category": "veg",
-    "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/fd50852cc428bccf67fede7add80cb4c-removebg-preview-2.png?w=600&q=80",
+    "imageSrc": "./images/vegbiryani.jpg?w=600&q=80",
     "altText": "Creamy Paneer Makhani Biryani",
     "name": "Veg Biryani",
-    "description": "Cooked with authentic spices and soft, warm Aloo. Perfect vegetarian main course..",
+    "description": "Cooked with authentic spices and soft, warm Aloo. Perfect vegetarian main course.",
     "price": "₹120"
   },
   {
     "category": "non-veg",
-    "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/ext-chicken.png?w=600&q=80",
-    "altText": "Smoky Fish Tikka Biryani",
+    "imageSrc": "./images/chickenchaap.jpg?w=600&q=80",
+    "altText": "Smoky Chicken Chaap",
     "name": "Chicken Chaap",
     "description": "Tender chicken marinated in spices, cooked with fragrant rice.",
     "price": "₹100"
