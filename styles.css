@@ -575,10 +575,11 @@ img {
   border-radius: 50%;
   line-height: 1;
 }
-.social-icons .material-symbols-outlined {
+.social-icons img {
+  width: 1.2rem;
   transition: transform var(--transition-speed);
 }
-.social-icons a:hover .material-symbols-outlined {
+.social-icons a:hover img {
   transform: scale(1.2);
 }
 .footer-bottom {
