@@ -270,8 +270,7 @@ img {
   text-align: center;
   color: var(--light-text-color);
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(https://dbapibiriyani.in/wp-content/uploads/2024/02/biryani-1920-x-1080-background-c715mxxhhl9uvx8j.jpg)
-      no-repeat center center/cover;
+    url("./images/cover.jpg") no-repeat center center/cover;
 }
 .hero-content {
   opacity: 0;
