@@ -440,12 +440,11 @@ img {
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 15px var(--shadow-color);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .review-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(62, 39, 35, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(62, 39, 35, 0.15);
 }
 .review-header {
   display: flex;
@@ -481,11 +480,11 @@ img {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px var(--shadow-color);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .video-link:hover .video-thumbnail {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(2deg);
   box-shadow: 0 12px 30px rgba(62, 39, 35, 0.2);
 }
 .video-thumbnail::after {
@@ -583,6 +582,25 @@ img {
   height: 24px;
   width: auto;
   margin-right: 0.75rem;
+  transition: filter var(--transition-speed); /* Add transition for smooth color change */
+}
+
+/* Apply brand colors to icons */
+.delivery-btn img[src$="zomato.svg"] {
+  /* Zomato Red: #E23744 */
+  filter: invert(34%) sepia(61%) saturate(2716%) hue-rotate(334deg)
+    brightness(91%) contrast(90%);
+}
+
+.delivery-btn img[src$="swiggy.svg"] {
+  /* Swiggy Orange: #FC8019 */
+  filter: invert(61%) sepia(95%) saturate(898%) hue-rotate(333deg)
+    brightness(99%) contrast(98%);
+}
+
+/* On hover, change icon color to white to match text */
+.delivery-btn:hover img {
+  filter: brightness(0) invert(1);
 }
 
 .site-footer {
