@@ -517,6 +517,17 @@ img {
   width: auto;
   margin-right: 0.75rem;
 }
+.delivery-btn img[src$="zomato.svg"] {
+  /* Zomato red: #E23744 */
+  filter: invert(27%) sepia(98%) saturate(7492%) hue-rotate(-8deg)
+    brightness(93%) contrast(98%);
+}
+
+.delivery-btn img[src$="swiggy.svg"] {
+  /* Swiggy orange: #FC8019 */
+  filter: invert(62%) sepia(97%) saturate(7492%) hue-rotate(359deg)
+    brightness(101%) contrast(101%);
+}
 .site-footer {
   background-color: var(--text-color);
   color: rgba(255, 255, 255, 0.8);
@@ -571,16 +582,32 @@ img {
 }
 .social-icons a {
   padding: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-icons svg {
+  fill: #fff !important;
+  color: #fff !important;
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: transform var(--transition-speed), fill var(--transition-speed);
+  display: block;
 }
 .social-icons img {
   width: 1.2rem;
-  transition: transform var(--transition-speed);
+  height: 1.2rem;
+  filter: brightness(0) invert(1);
+  transition: transform var(--transition-speed), filter var(--transition-speed);
+  display: block;
 }
-.social-icons a:hover img {
+.social-icons a:hover img,
+.social-icons a:hover svg {
   transform: scale(1.2);
+  filter: brightness(0.8) invert(1);
 }
 .footer-bottom {
   text-align: center;
