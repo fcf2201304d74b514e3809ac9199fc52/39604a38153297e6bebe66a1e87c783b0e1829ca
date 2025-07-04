@@ -25,9 +25,9 @@ function setupStaticEventListeners() {
 async function loadDynamicContent() {
   try {
     const [menuData, reviewData, videoData] = await Promise.all([
-      fetch("data/menu.json").then((res) => res.json()),
-      fetch("data/reviews.json").then((res) => res.json()),
-      fetch("data/videos.json").then((res) => res.json()),
+      fetch("datas/menu.json").then((res) => res.json()),
+      fetch("datas/reviews.json").then((res) => res.json()),
+      fetch("datas/videos.json").then((res) => res.json()),
     ]);
 
     populateMenu(menuData);
