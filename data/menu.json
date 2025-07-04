@@ -1,7 +1,7 @@
 [
   {
     "category": "non-veg",
-    "imageSrc": "./images/muttonbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/muttonbiryani.jpg?w=600&q=80",
     "altText": "A plate of Mutton Biryani with a boiled egg",
     "name": "Mutton Biryani",
     "description": "Finest delicacy of dum cooked aromatic rice with tender pieces of mutton.",
@@ -9,7 +9,7 @@
   },
   {
     "category": "upcoming",
-    "imageSrc": "./images/muttonraanbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/muttonraanbiryani.jpg?w=600&q=80",
     "altText": "Classic Chicken Biryani served in a bowl",
     "name": "Mutton Raan Biryani",
     "description": "A royal dish featuring tender mutton leg cooked with fragrant rice and spices.",
@@ -25,7 +25,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "./images/fishbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/fishbiryani.jpg?w=600&q=80",
     "altText": "Fish Biryani with boneless fish and fragrant rice",
     "name": "Fish Biryani",
     "description": "Boneless fish layered with fragrant, smoky rice.",
@@ -33,7 +33,7 @@
   },
   {
     "category": "upcoming",
-    "imageSrc": "./images/prawnsbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/prawnsbiryani.jpg?w=600&q=80",
     "altText": "Smoky Prawns Biryani",
     "name": "Prawns Biryani",
     "description": "Boneless prawns tikka layered with fragrant, smoky rice.",
@@ -41,7 +41,7 @@
   },
   {
     "category": "veg",
-    "imageSrc": "./images/vegbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/vegbiryani.jpg?w=600&q=80",
     "altText": "Creamy Paneer Makhani Biryani",
     "name": "Veg Biryani",
     "description": "Cooked with authentic spices and soft, warm Aloo. Perfect vegetarian main course.",
@@ -49,7 +49,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "./images/chickenchaap.jpg?w=600&q=80",
+    "imageSrc": "assets/images/chickenchaap.jpg?w=600&q=80",
     "altText": "Smoky Chicken Chaap",
     "name": "Chicken Chaap",
     "description": "Tender chicken marinated in spices, cooked with fragrant rice.",
