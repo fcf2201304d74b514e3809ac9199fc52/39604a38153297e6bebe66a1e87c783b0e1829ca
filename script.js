@@ -9,14 +9,14 @@ function main() {
 }
 
 /**
- * Sets up all event listeners for static UI elements like the navbar.
+ * Sets up all event listeners for static UI elements.
  */
 function setupStaticEventListeners() {
   setupNavbar();
   setupSmoothScroll();
   setupContentRevealObserver();
-  setupReservationForm();
-  setupNavbarSectionObserver(); // Initial observer setup
+  setupUnavailableFeatureModal(); // Replaces the old reservation form setup
+  setupNavbarSectionObserver();
 }
 
 /**
@@ -42,7 +42,6 @@ async function loadDynamicContent() {
     setupNavbarSectionObserver();
   } catch (error) {
     console.error("Failed to load dynamic content:", error);
-    // In a real app, display a user-friendly error message
   }
 }
 
@@ -135,18 +134,15 @@ function setupNavbar() {
   });
 }
 
-// Setup or re-setup the IntersectionObserver for navbar section highlighting
 function setupNavbarSectionObserver() {
   const navbar = document.querySelector(".navbar");
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".content-section, .hero");
 
-  // Disconnect any previous observers by storing it on window (optional, for robustness)
   if (window._navbarSectionObserver) {
     window._navbarSectionObserver.disconnect();
   }
 
-  // IntersectionObserver for smooth transitions
   const sectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -165,39 +161,18 @@ function setupNavbarSectionObserver() {
     if (section.id) sectionObserver.observe(section);
   });
   window._navbarSectionObserver = sectionObserver;
-
-  // Fallback: scroll event to always highlight the closest section
-  window.addEventListener("scroll", highlightClosestSection, { passive: true });
-
-  function highlightClosestSection() {
-    const scrollY = window.scrollY + navbar.offsetHeight + 2; // +2 for margin
-    let closestSection = null;
-    let minDistance = Infinity;
-    sections.forEach((section) => {
-      if (!section.id) return;
-      const rect = section.getBoundingClientRect();
-      const sectionTop = window.scrollY + rect.top;
-      const distance = Math.abs(scrollY - sectionTop);
-      if (distance < minDistance && scrollY >= sectionTop - 10) {
-        minDistance = distance;
-        closestSection = section;
-      }
-    });
-    if (closestSection) {
-      navLinks.forEach((l) => l.classList.remove("active"));
-      const link = document.querySelector(
-        `.nav-link[href="#${closestSection.id}"]`
-      );
-      if (link) link.classList.add("active");
-    }
-  }
 }
 
 function setupSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      // Prevent modal triggers from smooth scrolling
+      if (["#reservations", "#delivery"].includes(href)) {
+        return;
+      }
       e.preventDefault();
-      const targetElement = document.querySelector(this.getAttribute("href"));
+      const targetElement = document.querySelector(href);
       if (targetElement) targetElement.scrollIntoView({ behavior: "smooth" });
     });
   });
@@ -222,7 +197,7 @@ function setupContentRevealObserver() {
 
 function setupMenuFilter() {
   const filterButtons = document.querySelectorAll(".filter-btn");
-  const menuItems = document.querySelectorAll(".menu-item"); // Re-select after populating
+  const menuItems = document.querySelectorAll(".menu-item");
   if (filterButtons.length === 0 || menuItems.length === 0) return;
 
   filterButtons.forEach((button) => {
@@ -250,23 +225,59 @@ function setupVideoLinks() {
   });
 }
 
-function setupReservationForm() {
+/**
+ * Sets up and manages the "Feature Unavailable" modal.
+ */
+function setupUnavailableFeatureModal() {
+  const modal = document.getElementById("unavailable-modal");
+  if (!modal) return;
+
+  const closeModalBtn = modal.querySelector(".modal-close");
   const form = document.getElementById("reservation-form");
-  if (!form) return;
-  document.getElementById("date").min = new Date().toISOString().split("T")[0];
-  form.addEventListener("submit", (e) => {
+
+  // Elements that will trigger the modal
+  const triggers = [
+    ...form.querySelectorAll("input"),
+    form.querySelector(".form-submit-btn"),
+    document.querySelector(".hero a.secondary-cta"),
+    document.querySelector(".hero a.primary-cta"),
+    ...document.querySelectorAll(".delivery-btn"),
+  ];
+
+  const validTriggers = triggers.filter((el) => el !== null);
+
+  const showModal = (e) => {
     e.preventDefault();
-    let isValid = true;
-    form.querySelectorAll("input[required]").forEach((input) => {
-      const isInvalid = !input.checkValidity() || input.value.trim() === "";
-      input.classList.toggle("error", isInvalid);
-      isValid = !isInvalid && isValid;
-    });
-    if (isValid) {
-      alert(
-        "Reservation submitted successfully! We will contact you shortly to confirm."
-      );
-      form.reset();
+    e.stopPropagation();
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    setTimeout(() => modal.classList.add("visible"), 10);
+  };
+
+  const hideModal = () => {
+    modal.classList.remove("visible");
+    document.body.style.overflow = "";
+    const onTransitionEnd = () => {
+      modal.hidden = true;
+      modal.removeEventListener("transitionend", onTransitionEnd);
+    };
+    modal.addEventListener("transitionend", onTransitionEnd);
+  };
+
+  validTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", showModal);
+  });
+
+  closeModalBtn.addEventListener("click", hideModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      hideModal();
+    }
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("visible")) {
+      hideModal();
     }
   });
 }

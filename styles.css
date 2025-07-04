@@ -639,18 +639,26 @@ img {
   flex-direction: column;
   gap: 0.75rem;
 }
+
 .footer-column.contact p,
 .footer-column.contact a {
   display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
+  align-items: flex-start; /* Keeps icon at the top for multi-line text */
+  gap: 1rem; /* Increased gap */
   margin-bottom: 1rem;
 }
+
 .footer-column .material-symbols-outlined {
-  font-size: 22px;
-  margin-top: 2px;
+  font-size: 24px; /* Slightly larger icon */
   flex-shrink: 0;
+  margin-top: 3px; /* Fine-tuned vertical alignment */
 }
+
+.footer-column.contact a .material-symbols-outlined {
+  margin-top: 0; /* Reset for single-line links */
+  align-self: center; /* Center vertically for single-line items */
+}
+
 .social-icons {
   display: flex;
   gap: 1rem;
@@ -683,6 +691,114 @@ img {
   font-size: 0.9rem;
 }
 
+/* === MODAL STYLES === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(62, 39, 35, 0.7); /* Dark overlay using text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s 0.4s;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease;
+}
+
+.modal-content {
+  background: var(--background-color);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.visible .modal-content {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.modal-body {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.modal-prompt {
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start; /* Align items to the left */
+  text-align: left;
+  margin: 0 auto;
+  max-width: 380px; /* Constrain width for better alignment */
+}
+
+.modal-contact-link {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center icon and text */
+  gap: 1rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.modal-contact-info a.modal-contact-link:hover {
+  color: var(--secondary-color);
+  background-color: rgba(62, 39, 35, 0.05); /* Subtle hover background */
+}
+
+.modal-contact-link .material-symbols-outlined {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
 /* === RESPONSIVE BREAKPOINTS === */
 @media (max-width: 768px) {
   .nav-toggle {
@@ -711,6 +827,16 @@ img {
     align-items: center;
     padding: 2.5rem 0;
     gap: 2.5rem;
+  }
+  .modal-content {
+    padding: 2.5rem 1.5rem;
+  }
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  .modal-body,
+  .modal-contact-link {
+    font-size: 1rem;
   }
 }
 @media (min-width: 600px) {
