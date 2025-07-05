@@ -3,6 +3,12 @@
   --primary-color: #2e7d32; /* Deep, Lush Green */
   --secondary-color: #c77700; /* Rich Saffron Gold (Accessible) */
   --background-color: #fff8e1; /* Warm Creamy White */
+  --navbar-scrolled-bg: rgba(
+    255,
+    248,
+    225,
+    1
+  ); /* Semi-transparent for glass effect */
   --text-color: #3e2723; /* Deep Earthy Brown */
   --light-text-color: #ffffff;
   --border-color: #dcdcdc; /* Soft Neutral Gray */
@@ -97,22 +103,39 @@ img {
   animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-/* === 1. NAVIGATION BAR === */
+/* === 1. NAVIGATION BAR (ENHANCED TRANSITION) === */
 .navbar {
   height: var(--navbar-height);
-  background: transparent;
+  background-color: transparent; /* Start with a transparent background */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  /* 
+    Enhanced Transition:
+    - Increased duration to 0.5s for a more graceful effect.
+    - Used a custom cubic-bezier for a polished ease-in-out curve.
+    - Added backdrop-filter to the transition for a smooth blur effect.
+  */
+  transition: background-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+    backdrop-filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+    -webkit-backdrop-filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+/* 
+  Scrolled & Menu-Open State:
+  - Uses a semi-transparent background color.
+  - Adds a backdrop-filter to create a "glassmorphism" effect, blurring the content behind it.
+  - The box-shadow adds depth.
+*/
 .navbar.scrolled,
 .navbar.menu-open {
-  background-color: var(--background-color);
-  box-shadow: 0 2px 10px var(--shadow-color);
+  background-color: var(--navbar-scrolled-bg);
+  box-shadow: 0 4px 15px var(--shadow-color);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  backdrop-filter: blur(10px); /* Standard */
 }
 
 .nav-container {
@@ -832,7 +855,10 @@ img {
     top: calc(var(--navbar-height) - 1px);
     left: 0;
     width: 100%;
-    background-color: var(--background-color);
+    /* Use the same glass effect for the mobile menu */
+    background-color: var(--navbar-scrolled-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.4s ease-out, box-shadow 0.3s ease;
