@@ -2,57 +2,57 @@
   {
     "category": "non-veg",
     "imageSrc": "assets/images/muttonbiryani.jpg?w=600&q=80",
-    "altText": "A plate of Mutton Biryani with a boiled egg",
-    "name": "Mutton Biryani",
-    "description": "Finest delicacy of dum cooked aromatic rice with tender pieces of mutton.",
+    "altText": "Aromatic Mutton Dum Biryani with tender meat and a boiled egg",
+    "name": "Classic Mutton Biryani",
+    "description": "A timeless classic. Succulent mutton pieces slow-cooked with fragrant basmati rice in a sealed pot.",
     "price": "₹240"
   },
   {
     "category": "upcoming",
     "imageSrc": "assets/images/muttonraanbiryani.jpg?w=600&q=80",
-    "altText": "Classic Chicken Biryani served in a bowl",
-    "name": "Mutton Raan Biryani",
-    "description": "A royal dish featuring tender mutton leg cooked with fragrant rice and spices.",
-    "price": "Upcoming"
+    "altText": "Grand Mutton Raan Biryani, a feast for royalty",
+    "name": "Shaahi Mutton Raan Biryani",
+    "description": "A royal centerpiece. Tender, whole-roasted mutton leg marinated in spices, layered with saffron-infused rice.",
+    "price": "Coming Soon"
   },
   {
     "category": "non-veg",
     "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/fd50852cc428bccf67fede7add80cb4c-removebg-preview-1.png?w=600&q=80",
-    "altText": "A rich and aromatic King Prawn Biryani",
-    "name": "Chicken Biryani",
-    "description": "Juicy chicken and fragrant basmati rice, cooked to perfection.",
+    "altText": "Flavorful Chicken Dum Biryani with a potato",
+    "name": "Classic Chicken Dum Biryani",
+    "description": "Juicy chicken and a signature soft potato, slow-cooked (dum-pukht) with aromatic rice. An all-time favorite.",
     "price": "₹140"
   },
   {
     "category": "non-veg",
     "imageSrc": "assets/images/fishbiryani.jpg?w=600&q=80",
-    "altText": "Fish Biryani with boneless fish and fragrant rice",
-    "name": "Fish Biryani",
-    "description": "Boneless fish layered with fragrant, smoky rice.",
+    "altText": "Delicate Fish Biryani with boneless fillets and spices",
+    "name": "Spiced Fish Biryani",
+    "description": "Tender, boneless fish fillets marinated in spices, layered with fragrant, long-grain rice.",
     "price": "₹150"
   },
   {
     "category": "upcoming",
     "imageSrc": "assets/images/prawnsbiryani.jpg?w=600&q=80",
-    "altText": "Smoky Prawns Biryani",
-    "name": "Prawns Biryani",
-    "description": "Boneless prawns tikka layered with fragrant, smoky rice.",
-    "price": "Upcoming"
+    "altText": "Smoky and succulent Prawns Biryani",
+    "name": "Smoky Prawns Biryani",
+    "description": "Plump, smoky prawns tikka tossed with fragrant basmati rice and a blend of coastal spices.",
+    "price": "Coming Soon"
   },
   {
     "category": "veg",
     "imageSrc": "assets/images/vegbiryani.jpg?w=600&q=80",
-    "altText": "Creamy Paneer Makhani Biryani",
-    "name": "Veg Biryani",
-    "description": "Cooked with authentic spices and soft, warm Aloo. Perfect vegetarian main course.",
+    "altText": "A hearty plate of Vegetable Dum Biryani",
+    "name": "Vegetable Dum Biryani",
+    "description": "A delightful medley of seasonal vegetables and soft potatoes, slow-cooked with aromatic spices and basmati rice.",
     "price": "₹120"
   },
   {
     "category": "non-veg",
     "imageSrc": "assets/images/chickenchaap.jpg?w=600&q=80",
-    "altText": "Smoky Chicken Chaap",
-    "name": "Chicken Chaap",
-    "description": "Tender chicken marinated in spices, cooked with fragrant rice.",
+    "altText": "Rich and savory Special Chicken Chaap",
+    "name": "Special Chicken Chaap",
+    "description": "A slow-cooked delicacy. A tender chicken leg on the bone, marinated and simmered in a rich, aromatic gravy.",
     "price": "₹100"
   }
 ]
