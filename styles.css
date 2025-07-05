@@ -29,6 +29,27 @@ body {
   overflow-x: hidden; /* Prevent horizontal scrollbars from animations */
 }
 
+/* === TOUCH OPTIMIZATIONS === */
+body,
+a,
+button {
+  -webkit-tap-highlight-color: transparent; /* Removes the gray highlight on tap on iOS and some Android devices */
+}
+
+a,
+button,
+.cta,
+.filter-btn,
+.delivery-btn,
+.nav-toggle,
+.modal-close {
+  touch-action: manipulation; /* Disables double-tap to zoom on interactive elements, reducing tap delay. [6, 7] */
+  user-select: none; /* Prevents accidental text selection on interactive elements. [12] */
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
+}
+
 h1,
 h2,
 h3,
