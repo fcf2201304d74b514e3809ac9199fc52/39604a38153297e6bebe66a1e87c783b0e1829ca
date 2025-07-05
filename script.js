@@ -38,8 +38,9 @@ async function loadDynamicContent() {
     setupMenuFilter();
     setupVideoLinks();
 
-    // Re-initialize navbar section observer after dynamic content is loaded
-    setupNavbarSectionObserver();
+    // Re-initialize the navbar observer after the browser has had time to reflow.
+    // This delay ensures the observer is aware of the new height of the dynamic sections.
+    setTimeout(setupNavbarSectionObserver, 100);
   } catch (error) {
     console.error("Failed to load dynamic content:", error);
   }
@@ -155,7 +156,11 @@ function setupNavbarSectionObserver() {
         }
       });
     },
-    { rootMargin: `-${navbar.offsetHeight}px 0px 0px 0px`, threshold: 0.4 }
+    {
+      rootMargin: `-${navbar.offsetHeight}px 0px 0px 0px`,
+      // Lower the threshold to trigger with less of the section visible
+      threshold: 0.1,
+    }
   );
   sections.forEach((section) => {
     if (section.id) sectionObserver.observe(section);
