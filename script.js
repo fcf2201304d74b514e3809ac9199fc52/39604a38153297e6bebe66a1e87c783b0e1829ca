@@ -64,13 +64,78 @@ function populateMenu(items) {
     .join("");
 }
 
+/**
+ * Shuffles an array in place using the Fisher-Yates algorithm.
+ * @param {Array} array The array to shuffle.
+ * @returns {Array} The shuffled array.
+ */
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+/**
+ * Populates the reviews grid with a randomized and balanced selection of reviews.
+ * This function prioritizes positive reviews, occasionally shows neutral ones,
+ * and rarely includes negative ones to maintain authenticity.
+ * @param {Array} reviews - An array of review objects.
+ */
 function populateReviews(reviews) {
   const grid = document.getElementById("reviews-grid");
   if (!grid) return;
-  const sortedReviews = [...reviews]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 3);
-  grid.innerHTML = sortedReviews
+
+  const NUM_REVIEWS_TO_SHOW = 3;
+
+  // 1. Categorize reviews based on their rating
+  const positiveReviews = reviews.filter((r) => r.rating >= 4);
+  const neutralReviews = reviews.filter((r) => r.rating === 3);
+  const negativeReviews = reviews.filter((r) => r.rating <= 2);
+
+  let selectedReviews = [];
+
+  // 2. Prioritize positive reviews (aim for 2 out of 3)
+  selectedReviews.push(...shuffleArray([...positiveReviews]).slice(0, 2));
+
+  // 3. Decide on the third review to create a balanced and authentic mix
+  const showNegativeChance = 0.2; // 20% chance to show a negative review
+  const hasNegativeReviews = negativeReviews.length > 0;
+  const hasNeutralReviews = neutralReviews.length > 0;
+
+  if (Math.random() < showNegativeChance && hasNegativeReviews) {
+    // Rarely, add a random negative review
+    selectedReviews.push(shuffleArray([...negativeReviews])[0]);
+  } else if (hasNeutralReviews) {
+    // Otherwise, add a random neutral review
+    selectedReviews.push(shuffleArray([...neutralReviews])[0]);
+  } else if (positiveReviews.length > selectedReviews.length) {
+    // As a fallback, add another unique positive review
+    const remainingPositives = positiveReviews.filter(
+      (p) => !selectedReviews.includes(p)
+    );
+    if (remainingPositives.length > 0) {
+      selectedReviews.push(shuffleArray(remainingPositives)[0]);
+    }
+  }
+
+  // 4. Ensure there are exactly the desired number of reviews, filling any gaps if necessary
+  if (selectedReviews.length < NUM_REVIEWS_TO_SHOW) {
+    const allReviews = [...reviews];
+    const remainingReviews = allReviews.filter(
+      (r) => !selectedReviews.includes(r)
+    );
+    const shuffledRemainders = shuffleArray(remainingReviews);
+    const needed = NUM_REVIEWS_TO_SHOW - selectedReviews.length;
+    selectedReviews.push(...shuffledRemainders.slice(0, needed));
+  }
+
+  // 5. Shuffle the final selection to ensure random display order
+  const finalReviews = shuffleArray(selectedReviews);
+
+  // 6. Render the reviews to the DOM
+  grid.innerHTML = finalReviews
     .map(
       (review) => `
         <div class="review-card">
