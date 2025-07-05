@@ -239,8 +239,6 @@ function setupUnavailableFeatureModal() {
   const triggers = [
     ...form.querySelectorAll("input"),
     form.querySelector(".form-submit-btn"),
-    document.querySelector(".hero a.secondary-cta"),
-    document.querySelector(".hero a.primary-cta"),
     ...document.querySelectorAll(".delivery-btn"),
   ];
 
