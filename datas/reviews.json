@@ -1,27 +1,127 @@
 [
   {
-    "name": "Rohan Sign.",
-    "quote": "Absolutely the best biryani I've had. The mutton was incredibly tender. Highly recommended!",
+    "name": "Sameer Kulkarni",
+    "quote": "Ordered the Classic Mutton Biryani... and it was absolutely divine! The meat was so tender it just fell off the bone. Fragrant rice, perfect blend of spices. Will definitely be ordering again. 5/5 stars!",
     "rating": 5
   },
   {
-    "name": "Priya Singh",
-    "quote": "The vegetarian biryani was a revelation! So flavourful and aromatic. A must-try for everyone.",
+    "name": "Pooja Sharma",
+    "quote": "Finally a place that does justice to Vegetable Dum Biryani! The aroma itself is so tempting. Each bite was full of flavour. The quantity was also good. A must-try for all my fellow vegetarians. Highly recommended!",
     "rating": 5
   },
   {
-    "name": "Ankit Verma",
-    "quote": "Great ambience and even better food. The service was quick and the staff was courteous.",
+    "name": "Akash Jadhav",
+    "quote": "BiryaniMall is my go-to for a quick and delicious meal. The Classic Chicken Dum Biryani is consistently good. The potato is always perfectly cooked. Service is quick too.",
+    "rating": 5
+  },
+  {
+    "name": "Sneha Desai",
+    "quote": "Tried the Spiced Fish Biryani and it was a pleasant surprise. The fish was boneless and flaky, and the masala was just right. Not too overpowering. A good option for seafood lovers.",
     "rating": 4
   },
   {
-    "name": "Sneha P.",
-    "quote": "The King Prawn Biryani is a game-changer. Perfectly spiced and cooked to perfection. Will be back!",
+    "name": "Rahul More",
+    "quote": "Good food, good service. The Classic Mutton Biryani was tasty, though I felt the portion size could have been a bit more for the price. Overall a decent experience.",
+    "rating": 4
+  },
+  {
+    "name": "Anjali Patil",
+    "quote": "The Special Chicken Chaap is a must-order side dish! It's rich, flavourful, and goes perfectly with the biryani. The chicken was cooked to perfection. Loved it!",
     "rating": 5
   },
   {
-    "name": "Vikram N.",
-    "quote": "A solid place for a family dinner. The chicken biryani was delicious and the portions were generous.",
+    "name": "Vikram Singh",
+    "quote": "A solid 4-star experience. The Chicken Dum Biryani was flavourful and the raita was fresh. The ambience of the place is simple, but the food speaks for itself. [7]",
     "rating": 4
+  },
+  {
+    "name": "Neha Gupta",
+    "quote": "I'm a huge fan of their Vegetable Dum Biryani. It's not just a mix of rice and vegetables; you can taste the 'dum' flavour. It's my comfort food now. Keep up the good work!",
+    "rating": 5
+  },
+  {
+    "name": "Suresh Chavan",
+    "quote": "The Mutton Biryani was good, but a bit too oily for my liking. The taste was authentic though. The service was prompt and the staff was courteous.",
+    "rating": 3
+  },
+  {
+    "name": "Deepika Reddy",
+    "quote": "I wish they would launch the Shaahi Mutton Raan Biryani and Smoky Prawns Biryani soon! The pictures look so tempting. I'm eagerly waiting to try them.",
+    "rating": 5
+  },
+  {
+    "name": "Manoj Kumar",
+    "quote": "A decent place for a family dinner. We tried both the chicken and mutton biryani. The chicken one was the star of the show. The mutton could have been more tender.",
+    "rating": 4
+  },
+  {
+    "name": "Kavita Rao",
+    "quote": "The Spiced Fish Biryani is a unique offering and I'm glad I tried it. The flavour of the fish was well-infused into the rice. It was a light and satisfying meal.",
+    "rating": 5
+  },
+  {
+    "name": "Sachin Gaikwad",
+    "quote": "The food is okay. I found the biryani to be a bit bland. It was not as 'masaledar' as I expected. The service was quick though. [8]",
+    "rating": 3
+  },
+  {
+    "name": "Prakash Shinde",
+    "quote": "I have been ordering from BiryaniMall for a while now. The quality and taste are always consistent. The Classic Chicken Dum Biryani is a safe and delicious bet.",
+    "rating": 5
+  },
+  {
+    "name": "Sunita Mishra",
+    "quote": "The Vegetable Dum Biryani had a good variety of fresh vegetables. It's a wholesome and flavourful meal. The portion size is generous too. Value for money.",
+    "rating": 5
+  },
+  {
+    "name": "Ravi Bhosale",
+    "quote": "The Classic Mutton Biryani was a bit of a letdown. The mutton pieces were chewy and the rice lacked flavour. I have had better biryani elsewhere. [21]",
+    "rating": 2
+  },
+  {
+    "name": "Ganesh Pawar",
+    "quote": "The Special Chicken Chaap is a hidden gem on their menu! So succulent and the gravy is just amazing. I order it every time with my biryani.",
+    "rating": 5
+  },
+  {
+    "name": "Meera Iyer",
+    "quote": "A good place for a quick biryani craving. The Chicken Dum Biryani is flavourful and the price is reasonable. The packaging for takeaways is also very neat. [15]",
+    "rating": 4
+  },
+  {
+    "name": "Arun Deshmukh",
+    "quote": "I was disappointed with the Spiced Fish Biryani. The fish had a slightly weird smell and the masala was too overpowering. I will stick to their chicken and mutton options next time.",
+    "rating": 2
+  },
+  {
+    "name": "Priyanka Joshi",
+    "quote": "BiryaniMall is my favourite biryani place in the city! The Classic Mutton Biryani is to die for. The meat is always tender and the rice is so aromatic. Highly, highly recommended!",
+    "rating": 5
+  },
+  {
+    "name": "Rajesh Nair",
+    "quote": "Decent food, but nothing extraordinary. The Chicken Biryani was okay, but I've had more flavourful ones. It's a good option if you're in the area and hungry. [14]",
+    "rating": 3
+  },
+  {
+    "name": "Aishwarya Patil",
+    "quote": "I love that they have a dedicated Vegetable Dum Biryani that is actually delicious! It's not just an afterthought. The vegetables are fresh and the spices are perfect. My go-to for veg biryani.",
+    "rating": 5
+  },
+  {
+    "name": "Harish Mehta",
+    "quote": "The service is really fast here. I ordered the Classic Chicken Dum Biryani and it was served within 10 minutes. The taste was also good. A great place for a quick lunch.",
+    "rating": 4
+  },
+  {
+    "name": "Nisha Agarwal",
+    "quote": "I am eagerly waiting for the Smoky Prawns Biryani to be available. It sounds delicious! I hope it lives up to the expectations. Please launch it soon!",
+    "rating": 5
+  },
+  {
+    "name": "Sandeep Gupta",
+    "quote": "The Classic Mutton Biryani was a delight. The mutton was cooked perfectly and the flavours were well-balanced. It's a bit on the pricier side, but the quality justifies it. I will be back for more.",
+    "rating": 5
   }
 ]
