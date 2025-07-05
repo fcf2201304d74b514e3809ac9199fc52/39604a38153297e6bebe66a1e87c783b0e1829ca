@@ -1,0 +1,20 @@
+# humans.txt
+# This file provides information about the people and technology behind this website.
+
+/* TEAM */
+
+# This website was proudly crafted by Priyanshu Roy from ... for the Nana'S Biryani Mall brand.
+# We build digital experiences with passion and precision.
+
+    Developer: Priyanshu Roy
+    Organization: ...
+    Contact: ...
+    GitHub: ...
+
+/* SITE INFORMATION */
+
+    Standards: HTML5, CSS3, JavaScript (ES6+), WCAG for Accessibility
+    Primary Tools: VS Code, Figma, Git, Lighthouse
+    Purpose: To provide a beautiful and seamless online experience for guests of Nana'S Biryani Mall, showcasing their authentic flavors and inviting atmosphere.
+
+# Thank you for visiting and for your interest in the craft behind our work.

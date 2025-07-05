@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Sitemap for Nana'S Biryani Mall
+  Purpose: Informs search engines about the structure and important sections of our single-page website.
+  Last Updated: 2025-07-10
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main Homepage: Highest Priority -->
+  <url>
+    <loc>https://biryanimall.in/</loc>
+    <lastmod>2025-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+</urlset>

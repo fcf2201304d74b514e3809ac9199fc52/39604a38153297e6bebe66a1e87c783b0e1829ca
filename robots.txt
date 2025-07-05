@@ -1,0 +1,12 @@
+# robots.txt for https://biryanimall.in/
+# Our policy is to allow all crawlers to access all content on our site.
+
+# Allow all bots, including search engines and AI crawlers (Google, Bing, ChatGPT, etc.).
+User-agent: *
+Allow: /
+
+# The 'Allow' directive explicitly states that all parts of the site are open for crawling.
+# This ensures full visibility and indexation.
+
+# Location of the XML Sitemap for all crawlers.
+Sitemap: https://biryanimall.in/sitemap.xml
