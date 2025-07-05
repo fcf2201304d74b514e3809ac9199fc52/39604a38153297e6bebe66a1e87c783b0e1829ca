@@ -119,22 +119,48 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="nav-container">
-        <a href="#home" class="nav-logo">Nana'S Biryani Mall</a
+        <a href="#home" class="nav-logo" title="Return to the homepage"
+          >Nana'S Biryani Mall</a
         ><button
           class="nav-toggle"
           aria-label="Toggle navigation"
-          aria-expanded="false">
+          aria-expanded="false"
+          title="Open navigation menu">
           <span class="hamburger-icon"></span>
         </button>
         <div class="nav-menu">
           <ul class="nav-list">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">Story</a></li>
-            <li><a href="#menu" class="nav-link">Menu</a></li>
-            <li><a href="#reviews" class="nav-link">Reviews</a></li>
-            <li><a href="#videos" class="nav-link">Videos</a></li>
             <li>
-              <a href="#reservations" class="nav-link">Reserve & Order</a>
+              <a href="#home" class="nav-link" title="Go to the Home section"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="#about" class="nav-link" title="Read our story">Story</a>
+            </li>
+            <li>
+              <a href="#menu" class="nav-link" title="Explore our menu">Menu</a>
+            </li>
+            <li>
+              <a href="#reviews" class="nav-link" title="See guest reviews"
+                >Reviews</a
+              >
+            </li>
+            <li>
+              <a
+                href="#videos"
+                class="nav-link"
+                title="Watch our featured videos"
+                >Videos</a
+              >
+            </li>
+            <li>
+              <a
+                href="#reservations"
+                class="nav-link"
+                title="Book a table or order online"
+                >Reserve & Order</a
+              >
             </li>
           </ul>
         </div>
@@ -150,8 +176,15 @@
           spice blend. A taste of tradition in every bite.
         </p>
         <div class="cta-buttons">
-          <a href="#delivery" class="cta primary-cta">Order Online Now</a
-          ><a href="#reservations" class="cta secondary-cta"
+          <a
+            href="#delivery"
+            class="cta primary-cta"
+            title="Click to view our delivery partners"
+            >Order Online Now</a
+          ><a
+            href="#reservations"
+            class="cta secondary-cta"
+            title="Click to go to the table reservation form"
             >Reserve Your Table</a
           >
         </div>
@@ -176,12 +209,15 @@
           <img
             src="assets/images/story-image-3.jpg?w=600&q=80"
             alt="The warm and inviting ambiance of the Nana'S Biryani Mall restaurant"
+            title="The warm and inviting ambiance of our restaurant"
             loading="lazy" /><img
             src="assets/images/story-image-1.jpg?w=600&q=80"
             alt="A traditional handi of aromatic, slow-cooked Biryani"
+            title="A close-up of our traditional, slow-cooked Biryani handi"
             loading="lazy" /><img
             src="assets/images/story-image-2.jpg?w=600&q=80"
             alt="A vibrant mosaic of whole spices ready for our signature Biryani"
+            title="A colorful assortment of whole spices used in our recipes"
             loading="lazy" />
         </div>
       </section>
@@ -190,10 +226,30 @@
       <section id="menu" class="content-section">
         <h2 class="section-title">Our Signature Menu</h2>
         <div class="menu-filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="non-veg">Non-Veg</button>
-          <button class="filter-btn" data-filter="veg">Veg</button>
-          <button class="filter-btn" data-filter="upcoming">Coming Soon</button>
+          <button
+            class="filter-btn active"
+            data-filter="all"
+            title="Show all menu items">
+            All
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="non-veg"
+            title="Show only Non-Veg items">
+            Non-Veg
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="veg"
+            title="Show only Veg items">
+            Veg
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="upcoming"
+            title="Show items that are coming soon">
+            Coming Soon
+          </button>
         </div>
         <div id="menu-grid" class="menu-grid">
           <!-- Menu items dynamically inserted here -->
@@ -230,15 +286,29 @@
                   id="name"
                   name="name"
                   placeholder="Enter your name"
+                  title="Please enter your full name"
+                  disabled
                   required />
               </div>
               <div class="form-group">
                 <label for="date">Select Date</label
-                ><input type="date" id="date" name="date" required />
+                ><input
+                  type="date"
+                  id="date"
+                  name="date"
+                  title="Select the desired date for your reservation"
+                  disabled
+                  required />
               </div>
               <div class="form-group">
                 <label for="time">Choose Time</label
-                ><input type="time" id="time" name="time" required />
+                ><input
+                  type="time"
+                  id="time"
+                  name="time"
+                  title="Choose a time for your arrival"
+                  disabled
+                  required />
               </div>
               <div class="form-group">
                 <label for="guests">Number of Guests</label
@@ -249,9 +319,14 @@
                   min="1"
                   max="15"
                   placeholder="e.g., 4"
+                  title="Enter the number of people in your party (1-15)"
+                  disabled
                   required />
               </div>
-              <button type="submit" class="cta primary-cta form-submit-btn">
+              <button
+                type="submit"
+                class="cta primary-cta form-submit-btn"
+                title="Submit your reservation request">
                 Confirm Reservation
               </button>
             </form>
@@ -263,11 +338,17 @@
               straight to your doorstep.
             </p>
             <div class="delivery-partners">
-              <a href="#" class="delivery-btn"
+              <a
+                href="#"
+                class="delivery-btn"
+                title="Order delivery from Nana'S Biryani Mall via Zomato"
                 ><img src="assets/icons/zomato.svg" alt="Zomato Logo" /><span
                   >Order via Zomato</span
                 ></a
-              ><a href="#" class="delivery-btn"
+              ><a
+                href="#"
+                class="delivery-btn"
+                title="Order delivery from Nana'S Biryani Mall via Swiggy"
                 ><img src="assets/icons/swiggy.svg" alt="Swiggy Logo" /><span
                   >Order via Swiggy</span
                 ></a
@@ -291,6 +372,7 @@
             <a
               href="https://instagram.com/Nana'S Biryani Mallin"
               aria-label="Follow us on Instagram"
+              title="Visit our Instagram page"
               target="_blank"
               ><img
                 src="assets/icons/instagram.svg"
@@ -300,6 +382,7 @@
             <a
               href="https://www.youtube.com/@Nana'S Biryani Mallin"
               aria-label="Subscribe on YouTube"
+              title="Watch our videos on YouTube"
               target="_blank"
               ><img src="assets/icons/youtube.svg" height="24" alt="YouTube"
             /></a>
@@ -308,34 +391,47 @@
         <div class="footer-column links">
           <h4 class="footer-title">Explore</h4>
           <ul>
-            <li><a href="#about">Our Story</a></li>
-            <li><a href="#menu">Our Menu</a></li>
-            <li><a href="#reservations">Reserve & Order</a></li>
+            <li>
+              <a href="#about" title="Read more about our story">Our Story</a>
+            </li>
+            <li>
+              <a href="#menu" title="Browse our full menu">Our Menu</a>
+            </li>
+            <li>
+              <a
+                href="#reservations"
+                title="Make a reservation or order for delivery"
+                >Reserve & Order</a
+              >
+            </li>
           </ul>
         </div>
         <div class="footer-column contact">
           <h4 class="footer-title">Get In Touch</h4>
           <p>
-            <span class="material-symbols-outlined">location_on</span
+            <span class="material-symbols-outlined" title="Location"
+              >location_on</span
             ><span
               >Pundalik Nagar, Near Chatrapati Shivaji Maharaj Statue,
               Chhatrapati Sambhajinagar, Maharashtra 431009</span
             >
           </p>
           <p>
-            <a href="tel:+919209232092"
+            <a href="tel:+919209232092" title="Call us at +91 9209232092"
               ><span class="material-symbols-outlined">phone</span>+91
               9209232092</a
             >
           </p>
           <p>
-            <a href="tel:+919665457777"
+            <a href="tel:+919665457777" title="Call us at +91 9665457777"
               ><span class="material-symbols-outlined">phone</span>+91
               9665457777</a
             >
           </p>
           <p>
-            <a href="mailto:Nana'S Biryani Mall.in@gmail.com"
+            <a
+              href="mailto:Nana'S Biryani Mall.in@gmail.com"
+              title="Send us an email"
               ><span class="material-symbols-outlined">email</span>Nana'S
               Biryani Mall.in@gmail.com</a
             >
@@ -356,7 +452,12 @@
       aria-labelledby="modal-title"
       hidden>
       <div class="modal-content">
-        <button class="modal-close" aria-label="Close modal">×</button>
+        <button
+          class="modal-close"
+          aria-label="Close modal"
+          title="Close this window">
+          ×
+        </button>
         <h3 id="modal-title" class="modal-title">Online Service Unavailable</h3>
         <p class="modal-body">
           We apologize, but this feature is not active at the moment. We are
@@ -366,11 +467,17 @@
           For reservations or orders, please call us directly:
         </p>
         <div class="modal-contact-info">
-          <a href="tel:+919209232092" class="modal-contact-link">
+          <a
+            href="tel:+919209232092"
+            class="modal-contact-link"
+            title="Call us to make a reservation or place an order">
             <span class="material-symbols-outlined">phone</span>
             <span>+91 9209232092</span>
           </a>
-          <a href="tel:+919665457777" class="modal-contact-link">
+          <a
+            href="tel:+919665457777"
+            class="modal-contact-link"
+            title="Call us to make a reservation or place an order">
             <span class="material-symbols-outlined">phone</span>
             <span>+91 9665457777</span>
           </a>
