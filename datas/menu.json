@@ -1,7 +1,7 @@
 [
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/muttonbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/classic-mutton-biryani.jpg?w=600&q=80",
     "altText": "Aromatic Mutton Dum Biryani with tender meat and a boiled egg",
     "name": "Classic Mutton Biryani",
     "description": "A timeless classic. Succulent mutton pieces slow-cooked with fragrant basmati rice in a sealed pot.",
@@ -9,7 +9,7 @@
   },
   {
     "category": "upcoming",
-    "imageSrc": "assets/images/muttonraanbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/shaahi-mutton-raan-biryani.jpg?w=600&q=80",
     "altText": "Grand Mutton Raan Biryani, a feast for royalty",
     "name": "Shaahi Mutton Raan Biryani",
     "description": "A royal centerpiece. Tender, whole-roasted mutton leg marinated in spices, layered with saffron-infused rice.",
@@ -17,7 +17,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "https://dbapibiriyani.in/wp-content/uploads/2024/02/fd50852cc428bccf67fede7add80cb4c-removebg-preview-1.png?w=600&q=80",
+    "imageSrc": "assets/images/classic-chicken-dum-biryani?w=600&q=80",
     "altText": "Flavorful Chicken Dum Biryani with a potato",
     "name": "Classic Chicken Dum Biryani",
     "description": "Juicy chicken and a signature soft potato, slow-cooked (dum-pukht) with aromatic rice. An all-time favorite.",
