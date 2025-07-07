@@ -1,7 +1,7 @@
 [
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/classic-mutton-biryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/menu/classic_mutton_biryani.jpeg?w=600&q=80",
     "altText": "Aromatic Mutton Dum Biryani with tender meat and a boiled egg",
     "name": "Classic Mutton Biryani",
     "description": "A timeless classic. Succulent mutton pieces slow-cooked with fragrant basmati rice in a sealed pot.",
@@ -9,7 +9,7 @@
   },
   {
     "category": "upcoming",
-    "imageSrc": "assets/images/shaahi-mutton-raan-biryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/menu/shaahi_mutton_raan_biryani.jpeg?w=600&q=80",
     "altText": "Grand Mutton Raan Biryani, a feast for royalty",
     "name": "Shaahi Mutton Raan Biryani",
     "description": "A royal centerpiece. Tender, whole-roasted mutton leg marinated in spices, layered with saffron-infused rice.",
@@ -17,7 +17,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/classic-chicken-dum-biryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/menu/classic_chicken_dum_biryani.jpeg?w=600&q=80",
     "altText": "Flavorful Chicken Dum Biryani with a potato",
     "name": "Classic Chicken Dum Biryani",
     "description": "Juicy chicken and a signature soft potato, slow-cooked (dum-pukht) with aromatic rice. An all-time favorite.",
@@ -25,7 +25,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/fishbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/menu/spiced_fish_biryani.jpeg?w=600&q=80",
     "altText": "Delicate Fish Biryani with boneless fillets and spices",
     "name": "Spiced Fish Biryani",
     "description": "Tender, boneless fish fillets marinated in spices, layered with fragrant, long-grain rice.",
@@ -49,7 +49,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/chickenchaap.jpg?w=600&q=80",
+    "imageSrc": "assets/images/menu/special_chicken_chaap.jpeg?w=600&q=80",
     "altText": "Rich and savory Special Chicken Chaap",
     "name": "Special Chicken Chaap",
     "description": "A slow-cooked delicacy. A tender chicken leg on the bone, marinated and simmered in a rich, aromatic gravy.",
