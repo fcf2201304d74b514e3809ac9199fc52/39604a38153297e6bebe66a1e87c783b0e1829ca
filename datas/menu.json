@@ -1,7 +1,7 @@
 [
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/menu/classic_mutton_biryani.jpeg?w=600&q=80",
+    "imageSrc": "assets/images/menu/classic_mutton_biryani.jpg",
     "altText": "Aromatic Mutton Dum Biryani with tender meat and a boiled egg",
     "name": "Classic Mutton Biryani",
     "description": "A timeless classic. Succulent mutton pieces slow-cooked with fragrant basmati rice in a sealed pot.",
@@ -9,7 +9,7 @@
   },
   {
     "category": "upcoming",
-    "imageSrc": "assets/images/menu/shaahi_mutton_raan_biryani.jpeg?w=600&q=80",
+    "imageSrc": "assets/images/menu/shaahi_mutton_raan_biryani.jpg",
     "altText": "Grand Mutton Raan Biryani, a feast for royalty",
     "name": "Shaahi Mutton Raan Biryani",
     "description": "A royal centerpiece. Tender, whole-roasted mutton leg marinated in spices, layered with saffron-infused rice.",
@@ -17,7 +17,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/menu/classic_chicken_dum_biryani.jpeg?w=600&q=80",
+    "imageSrc": "assets/images/menu/classic_chicken_dum_biryani.jpg",
     "altText": "Flavorful Chicken Dum Biryani with a potato",
     "name": "Classic Chicken Dum Biryani",
     "description": "Juicy chicken and a signature soft potato, slow-cooked (dum-pukht) with aromatic rice. An all-time favorite.",
@@ -25,7 +25,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/menu/spiced_fish_biryani.jpeg?w=600&q=80",
+    "imageSrc": "assets/images/menu/spiced_fish_biryani.jpg",
     "altText": "Delicate Fish Biryani with boneless fillets and spices",
     "name": "Spiced Fish Biryani",
     "description": "Tender, boneless fish fillets marinated in spices, layered with fragrant, long-grain rice.",
@@ -33,7 +33,7 @@
   },
   {
     "category": "upcoming",
-    "imageSrc": "assets/images/prawnsbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/menu/smoky_prawns_biryani.jpg",
     "altText": "Smoky and succulent Prawns Biryani",
     "name": "Smoky Prawns Biryani",
     "description": "Plump, smoky prawns tikka tossed with fragrant basmati rice and a blend of coastal spices.",
@@ -41,7 +41,7 @@
   },
   {
     "category": "veg",
-    "imageSrc": "assets/images/vegbiryani.jpg?w=600&q=80",
+    "imageSrc": "assets/images/menu/vegetable_dum_biryani.jpg",
     "altText": "A hearty plate of Vegetable Dum Biryani",
     "name": "Vegetable Dum Biryani",
     "description": "A delightful medley of seasonal vegetables and soft potatoes, slow-cooked with aromatic spices and basmati rice.",
@@ -49,7 +49,7 @@
   },
   {
     "category": "non-veg",
-    "imageSrc": "assets/images/menu/special_chicken_chaap.jpeg?w=600&q=80",
+    "imageSrc": "assets/images/menu/special_chicken_chaap.jpeg",
     "altText": "Rich and savory Special Chicken Chaap",
     "name": "Special Chicken Chaap",
     "description": "A slow-cooked delicacy. A tender chicken leg on the bone, marinated and simmered in a rich, aromatic gravy.",
