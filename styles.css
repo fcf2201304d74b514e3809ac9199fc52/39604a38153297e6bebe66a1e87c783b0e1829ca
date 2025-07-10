@@ -13,6 +13,8 @@
   --light-text-color: #ffffff;
   --border-color: #dcdcdc; /* Soft Neutral Gray */
   --shadow-color: rgba(62, 39, 35, 0.1); /* Shadow based on text color */
+  --error-color: #d32f2f; /* Deep Red for errors */
+  --error-shadow-color: rgba(211, 47, 47, 0.2); /* Soft Red for error glow */
   --font-primary: "Lato", sans-serif;
   --font-headings: "Playfair Display", serif;
   --transition-speed: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
@@ -112,24 +114,12 @@ img {
   left: 0;
   width: 100%;
   z-index: 1000;
-  /* 
-    Enhanced Transition:
-    - Increased duration to 0.5s for a more graceful effect.
-    - Used a custom cubic-bezier for a polished ease-in-out curve.
-    - Added backdrop-filter to the transition for a smooth blur effect.
-  */
   transition: background-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
     box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
     backdrop-filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
     -webkit-backdrop-filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* 
-  Scrolled & Menu-Open State:
-  - Uses a semi-transparent background color.
-  - Adds a backdrop-filter to create a "glassmorphism" effect, blurring the content behind it.
-  - The box-shadow adds depth.
-*/
 .navbar.scrolled,
 .navbar.menu-open {
   background-color: var(--navbar-scrolled-bg);
@@ -594,9 +584,13 @@ img {
   margin-bottom: 2rem;
   font-size: 1.8rem;
 }
+
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0; /* Adjusted for error message spacing */
+  padding-bottom: 1.5rem; /* Re-add padding here */
+  position: relative;
 }
+
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
@@ -614,8 +608,31 @@ img {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
 }
+
+/* === Inline Form Validation (For Lucky Draw) === */
+/* These styles can be removed if the Lucky Draw form is disabled. */
+.form-error-message {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  display: none; /* Hidden by default */
+  height: 1em; /* Reserve space to prevent layout shift */
+}
+.form-group.error .form-error-message {
+  display: block; /* Show message on error */
+}
+.form-group.error input {
+  border-color: var(--error-color); /* Highlight input border */
+}
+.form-group.error input:focus {
+  box-shadow: 0 0 0 3px var(--error-shadow-color); /* Red focus glow */
+}
+/* === End of Lucky Draw Validation Styles === */
+
 .form-submit-btn {
   width: 100%;
+  margin-top: 0.5rem; /* Add space above the button */
 }
 .delivery-partners {
   display: flex;
@@ -626,23 +643,19 @@ img {
   height: 24px;
   width: auto;
   margin-right: 0.75rem;
-  transition: filter var(--transition-speed); /* Add transition for smooth color change */
+  transition: filter var(--transition-speed);
 }
 
-/* Apply brand colors to icons */
 .delivery-btn img[src$="zomato.svg"] {
-  /* Zomato Red: #E23744 */
   filter: invert(34%) sepia(61%) saturate(2716%) hue-rotate(334deg)
     brightness(91%) contrast(90%);
 }
 
 .delivery-btn img[src$="swiggy.svg"] {
-  /* Swiggy Orange: #FC8019 */
   filter: invert(61%) sepia(95%) saturate(898%) hue-rotate(333deg)
     brightness(99%) contrast(98%);
 }
 
-/* On hover, change icon color to white to match text */
 .delivery-btn:hover img {
   filter: brightness(0) invert(1);
 }
@@ -687,20 +700,20 @@ img {
 .footer-column.contact p,
 .footer-column.contact a {
   display: flex;
-  align-items: flex-start; /* Keeps icon at the top for multi-line text */
-  gap: 1rem; /* Increased gap */
+  align-items: flex-start;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
 .footer-column .material-symbols-outlined {
-  font-size: 24px; /* Slightly larger icon */
+  font-size: 24px;
   flex-shrink: 0;
-  margin-top: 3px; /* Fine-tuned vertical alignment */
+  margin-top: 3px;
 }
 
 .footer-column.contact a .material-symbols-outlined {
-  margin-top: 0; /* Reset for single-line links */
-  align-self: center; /* Center vertically for single-line items */
+  margin-top: 0;
+  align-self: center;
 }
 
 .social-icons {
@@ -739,7 +752,7 @@ img {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(62, 39, 35, 0.7); /* Dark overlay using text color */
+  background: rgba(62, 39, 35, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -814,15 +827,15 @@ img {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: flex-start; /* Align items to the left */
+  align-items: flex-start;
   text-align: left;
   margin: 0 auto;
-  max-width: 380px; /* Constrain width for better alignment */
+  max-width: 380px;
 }
 
 .modal-contact-link {
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Vertically center icon and text */
+  display: flex;
+  align-items: center;
   gap: 1rem;
   font-size: 1.1rem;
   text-decoration: none;
@@ -834,13 +847,13 @@ img {
 
 .modal-contact-info a.modal-contact-link:hover {
   color: var(--secondary-color);
-  background-color: rgba(62, 39, 35, 0.05); /* Subtle hover background */
+  background-color: rgba(62, 39, 35, 0.05);
 }
 
 .modal-contact-link .material-symbols-outlined {
   color: var(--primary-color);
   font-size: 1.8rem;
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  flex-shrink: 0;
 }
 
 /* === RESPONSIVE BREAKPOINTS === */
@@ -855,7 +868,6 @@ img {
     top: calc(var(--navbar-height) - 1px);
     left: 0;
     width: 100%;
-    /* Use the same glass effect for the mobile menu */
     background-color: var(--navbar-scrolled-bg);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);

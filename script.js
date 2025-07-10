@@ -1,22 +1,35 @@
 document.addEventListener("DOMContentLoaded", main);
 
 function main() {
-  // Setup listeners for static elements that exist on page load
-  setupStaticEventListeners();
-
+  // Setup listeners for core site functionality
+  setupCoreEventListeners();
+  // Setup listeners for feature-specific elements (forms, etc.)
+  setupFeatureSpecificEventListeners();
   // Load dynamic content from JSON files
   loadDynamicContent();
 }
 
 /**
- * Sets up all event listeners for static UI elements.
+ * Sets up listeners for core site functionality like navbar, scrolling, etc.
  */
-function setupStaticEventListeners() {
+function setupCoreEventListeners() {
   setupNavbar();
   setupSmoothScroll();
   setupContentRevealObserver();
-  setupUnavailableFeatureModal(); // Replaces the old reservation form setup
+  initModals(); // Centralized modal management
   setupNavbarSectionObserver();
+}
+
+/**
+ * Sets up listeners for features that might be enabled or disabled,
+ * like different forms.
+ */
+function setupFeatureSpecificEventListeners() {
+  /* --- To disable the Lucky Draw, comment out the line below --- */
+  setupLuckyDrawForm();
+
+  /* --- To re-enable the Reservation Form, uncomment the line below --- */
+  // setupReservationForm();
 }
 
 /**
@@ -34,17 +47,201 @@ async function loadDynamicContent() {
     populateReviews(reviewData);
     populateVideos(videoData);
 
-    // Setup listeners for the newly created dynamic content
     setupMenuFilter();
     setupVideoLinks();
-
-    // Re-initialize the navbar observer after the browser has had time to reflow.
-    // This delay ensures the observer is aware of the new height of the dynamic sections.
     setTimeout(setupNavbarSectionObserver, 100);
   } catch (error) {
     console.error("Failed to load dynamic content:", error);
   }
 }
+
+// --- MODAL MANAGEMENT (CENTRALIZED) ---
+
+function initModals() {
+  document.querySelectorAll(".modal-overlay").forEach((modal) => {
+    const modalId = modal.id;
+    const closeBtn = modal.querySelector(".modal-close");
+    const hide = () => hideModal(modalId);
+    if (closeBtn) closeBtn.addEventListener("click", hide);
+    modal.addEventListener("click", (e) => e.target === modal && hide());
+  });
+
+  document.querySelectorAll("[data-modal-trigger]").forEach((trigger) => {
+    const modalId = trigger.dataset.modalTrigger;
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      showModal(modalId);
+    });
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const visibleModal = document.querySelector(".modal-overlay.visible");
+      if (visibleModal) hideModal(visibleModal.id);
+    }
+  });
+}
+
+function showModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+  setTimeout(() => modal.classList.add("visible"), 10);
+}
+
+function hideModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  modal.classList.remove("visible");
+  document.body.style.overflow = "";
+  modal.addEventListener("transitionend", () => (modal.hidden = true), {
+    once: true,
+  });
+}
+
+// --- FORM VALIDATION UTILITIES ---
+
+/**
+ * Displays an error message for a specific form input.
+ * @param {HTMLInputElement} input The input element with an error.
+ * @param {string} message The error message to display.
+ */
+function showFormError(input, message) {
+  const formGroup = input.parentElement;
+  const errorElement = formGroup.querySelector(".form-error-message");
+  formGroup.classList.add("error");
+  errorElement.textContent = message;
+}
+
+/**
+ * Clears all error messages and styles from a form.
+ * @param {HTMLFormElement} form The form element to clear errors from.
+ */
+function clearFormErrors(form) {
+  form.querySelectorAll(".form-group.error").forEach((formGroup) => {
+    formGroup.classList.remove("error");
+    formGroup.querySelector(".form-error-message").textContent = "";
+  });
+}
+
+// --- FEATURE: LUCKY DRAW FORM ---
+// To disable this feature, comment out the entire function and its call in setupFeatureSpecificEventListeners.
+function setupLuckyDrawForm() {
+  const form = document.getElementById("lucky-draw-form");
+  if (!form) return;
+
+  const nameInput = document.getElementById("lucky-draw-name");
+  const mobileInput = document.getElementById("mobile-number");
+  const couponInput = document.getElementById("coupon-code");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    clearFormErrors(form);
+    let isValid = true;
+
+    if (nameInput.value.trim() === "") {
+      showFormError(nameInput, "Please enter your full name.");
+      isValid = false;
+    }
+    if (mobileInput.value.trim() === "") {
+      showFormError(mobileInput, "Please enter your mobile number.");
+      isValid = false;
+    } else if (!/^\d{10}$/.test(mobileInput.value.trim())) {
+      showFormError(
+        mobileInput,
+        "Please enter a valid 10-digit mobile number."
+      );
+      isValid = false;
+    }
+    if (couponInput.value.trim() === "") {
+      showFormError(couponInput, "Please enter your coupon code.");
+      isValid = false;
+    }
+
+    if (isValid) {
+      const mailtoLink = `mailto:biryanimall.in@gmail.com?subject=${encodeURIComponent(
+        "New Lucky Draw Entry from Website"
+      )}&body=${encodeURIComponent(
+        `A new entry has been submitted:\n\n----------------------------------------\nFull Name: ${nameInput.value.trim()}\nMobile Number: ${mobileInput.value.trim()}\nCoupon Code: ${couponInput.value.trim()}\n----------------------------------------\n\nThis email was automatically generated from the Nana'S Biryani Mall website.`
+      )}`;
+
+      window.location.href = mailtoLink;
+      showModal("submission-success-modal");
+      form.reset();
+    }
+  });
+}
+// --- END OF LUCKY DRAW FEATURE ---
+
+// --- FEATURE: RESERVATION FORM (DEACTIVATED) ---
+// To re-enable, uncomment this function and its call in setupFeatureSpecificEventListeners.
+/*
+function setupReservationForm() {
+  const form = document.getElementById("reservation-form");
+  if (!form) return;
+
+  const nameInput = document.getElementById("name");
+  const dateInput = document.getElementById("date");
+  const timeInput = document.getElementById("time");
+  const guestsInput = document.getElementById("guests");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    clearFormErrors(form);
+    let isValid = true;
+
+    // Validate Name
+    if (nameInput.value.trim() === "") {
+      showFormError(nameInput, "Please enter your full name.");
+      isValid = false;
+    }
+
+    // Validate Date
+    if (dateInput.value === "") {
+      showFormError(dateInput, "Please select a date.");
+      isValid = false;
+    } else {
+      const selectedDate = new Date(dateInput.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Reset time to compare dates only
+      if (selectedDate < today) {
+        showFormError(dateInput, "Date cannot be in the past.");
+        isValid = false;
+      }
+    }
+
+    // Validate Time
+    if (timeInput.value === "") {
+      showFormError(timeInput, "Please choose a time.");
+      isValid = false;
+    }
+
+    // Validate Guests
+    if (guestsInput.value === "") {
+      showFormError(guestsInput, "Please enter the number of guests.");
+      isValid = false;
+    } else {
+      const guests = parseInt(guestsInput.value, 10);
+      const min = parseInt(guestsInput.min, 10);
+      const max = parseInt(guestsInput.max, 10);
+      if (guests < min || guests > max) {
+        showFormError(guestsInput, `Please enter a number between ${min} and ${max}.`);
+        isValid = false;
+      }
+    }
+
+    if (isValid) {
+      // If the form were active, submission logic would go here.
+      // For now, it just confirms validation works and shows the "unavailable" modal.
+      console.log("Reservation form is valid, but feature is disabled.");
+      showModal("unavailable-modal");
+      form.reset();
+    }
+  });
+}
+*/
+// --- END OF RESERVATION FEATURE ---
 
 // --- RENDER FUNCTIONS ---
 function populateMenu(items) {
@@ -58,17 +255,11 @@ function populateMenu(items) {
             <h3>${item.name}</h3>
             <p>${item.description}</p>
             <span class="price">${item.price}</span>
-        </div>
-    `
+        </div>`
     )
     .join("");
 }
 
-/**
- * Shuffles an array in place using the Fisher-Yates algorithm.
- * @param {Array} array The array to shuffle.
- * @returns {Array} The shuffled array.
- */
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -77,65 +268,31 @@ function shuffleArray(array) {
   return array;
 }
 
-/**
- * Populates the reviews grid with a randomized and balanced selection of reviews.
- * This function prioritizes positive reviews, occasionally shows neutral ones,
- * and rarely includes negative ones to maintain authenticity.
- * @param {Array} reviews - An array of review objects.
- */
 function populateReviews(reviews) {
   const grid = document.getElementById("reviews-grid");
   if (!grid) return;
-
   const NUM_REVIEWS_TO_SHOW = 3;
-
-  // 1. Categorize reviews based on their rating
-  const positiveReviews = reviews.filter((r) => r.rating >= 4);
-  const neutralReviews = reviews.filter((r) => r.rating === 3);
-  const negativeReviews = reviews.filter((r) => r.rating <= 2);
-
-  let selectedReviews = [];
-
-  // 2. Prioritize positive reviews (aim for 2 out of 3)
-  selectedReviews.push(...shuffleArray([...positiveReviews]).slice(0, 2));
-
-  // 3. Decide on the third review to create a balanced and authentic mix
-  const showNegativeChance = 0.2; // 20% chance to show a negative review
-  const hasNegativeReviews = negativeReviews.length > 0;
-  const hasNeutralReviews = neutralReviews.length > 0;
-
-  if (Math.random() < showNegativeChance && hasNegativeReviews) {
-    // Rarely, add a random negative review
-    selectedReviews.push(shuffleArray([...negativeReviews])[0]);
-  } else if (hasNeutralReviews) {
-    // Otherwise, add a random neutral review
-    selectedReviews.push(shuffleArray([...neutralReviews])[0]);
-  } else if (positiveReviews.length > selectedReviews.length) {
-    // As a fallback, add another unique positive review
-    const remainingPositives = positiveReviews.filter(
-      (p) => !selectedReviews.includes(p)
-    );
-    if (remainingPositives.length > 0) {
-      selectedReviews.push(shuffleArray(remainingPositives)[0]);
-    }
+  const positive = reviews.filter((r) => r.rating >= 4);
+  const neutral = reviews.filter((r) => r.rating === 3);
+  const negative = reviews.filter((r) => r.rating <= 2);
+  let selected = [];
+  selected.push(...shuffleArray([...positive]).slice(0, 2));
+  if (Math.random() < 0.2 && negative.length > 0) {
+    selected.push(shuffleArray([...negative])[0]);
+  } else if (neutral.length > 0) {
+    selected.push(shuffleArray([...neutral])[0]);
+  } else if (positive.length > selected.length) {
+    const remaining = positive.filter((p) => !selected.includes(p));
+    if (remaining.length > 0) selected.push(shuffleArray(remaining)[0]);
   }
-
-  // 4. Ensure there are exactly the desired number of reviews, filling any gaps if necessary
-  if (selectedReviews.length < NUM_REVIEWS_TO_SHOW) {
-    const allReviews = [...reviews];
-    const remainingReviews = allReviews.filter(
-      (r) => !selectedReviews.includes(r)
-    );
-    const shuffledRemainders = shuffleArray(remainingReviews);
-    const needed = NUM_REVIEWS_TO_SHOW - selectedReviews.length;
-    selectedReviews.push(...shuffledRemainders.slice(0, needed));
+  while (
+    selected.length < NUM_REVIEWS_TO_SHOW &&
+    reviews.length > selected.length
+  ) {
+    const remaining = reviews.filter((r) => !selected.includes(r));
+    selected.push(shuffleArray(remaining)[0]);
   }
-
-  // 5. Shuffle the final selection to ensure random display order
-  const finalReviews = shuffleArray(selectedReviews);
-
-  // 6. Render the reviews to the DOM
-  grid.innerHTML = finalReviews
+  grid.innerHTML = shuffleArray(selected)
     .map(
       (review) => `
         <div class="review-card">
@@ -146,8 +303,7 @@ function populateReviews(reviews) {
                 )}${"☆".repeat(5 - review.rating)}</span>
             </div>
             <p class="review-quote">"${review.quote}"</p>
-        </div>
-    `
+        </div>`
     )
     .join("");
 }
@@ -158,43 +314,39 @@ function populateVideos(videos) {
   grid.innerHTML = videos
     .map(
       (video) => `
-        <a href="https://www.youtube.com/watch?v=${video.videoId}" class="video-link">
+        <a href="https://www.youtube.com/watch?v=${video.videoId}" class="video-link" target="_blank" rel="noopener noreferrer">
             <div class="video-thumbnail">
                 <img src="${video.thumbnailSrc}?w=600&q=80" alt="${video.altText}" loading="lazy">
                 <div class="play-button">▶</div>
                 <p>${video.title}</p>
             </div>
-        </a>
-    `
+        </a>`
     )
     .join("");
 }
 
-// --- EVENT LISTENER SETUP FUNCTIONS ---
+// --- CORE EVENT LISTENERS ---
 function setupNavbar() {
   const navbar = document.querySelector(".navbar");
   const navToggle = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector(".nav-menu");
   const navLinks = document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-  });
-
+  window.addEventListener("scroll", () =>
+    navbar.classList.toggle("scrolled", window.scrollY > 50)
+  );
   navToggle.addEventListener("click", () => {
-    const isOpened = navMenu.classList.toggle("open");
-    navbar.classList.toggle("menu-open", isOpened);
-    navToggle.classList.toggle("open", isOpened);
-    navToggle.setAttribute("aria-expanded", isOpened);
+    const isOpen = navMenu.classList.toggle("open");
+    navbar.classList.toggle("menu-open", isOpen);
+    navToggle.classList.toggle("open", isOpen);
+    navToggle.setAttribute("aria-expanded", isOpen);
   });
-
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       if (navMenu.classList.contains("open")) {
         navMenu.classList.remove("open");
         navbar.classList.remove("menu-open");
         navToggle.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", false);
+        navToggle.setAttribute("aria-expanded", "false");
       }
     });
   });
@@ -204,12 +356,8 @@ function setupNavbarSectionObserver() {
   const navbar = document.querySelector(".navbar");
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".content-section, .hero");
-
-  if (window._navbarSectionObserver) {
-    window._navbarSectionObserver.disconnect();
-  }
-
-  const sectionObserver = new IntersectionObserver(
+  if (window._navbarSectionObserver) window._navbarSectionObserver.disconnect();
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -221,29 +369,23 @@ function setupNavbarSectionObserver() {
         }
       });
     },
-    {
-      rootMargin: `-${navbar.offsetHeight}px 0px 0px 0px`,
-      // Lower the threshold to trigger with less of the section visible
-      threshold: 0.1,
-    }
+    { rootMargin: `-${navbar.offsetHeight}px 0px 0px 0px`, threshold: 0.1 }
   );
-  sections.forEach((section) => {
-    if (section.id) sectionObserver.observe(section);
-  });
-  window._navbarSectionObserver = sectionObserver;
+  sections.forEach((section) => section.id && observer.observe(section));
+  window._navbarSectionObserver = observer;
 }
 
 function setupSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       const href = this.getAttribute("href");
-      // Prevent modal triggers from smooth scrolling
-      if (["#reservations", "#delivery"].includes(href)) {
-        return;
+      if (href.length > 1) {
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
       }
-      e.preventDefault();
-      const targetElement = document.querySelector(href);
-      if (targetElement) targetElement.scrollIntoView({ behavior: "smooth" });
     });
   });
 }
@@ -268,8 +410,7 @@ function setupContentRevealObserver() {
 function setupMenuFilter() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const menuItems = document.querySelectorAll(".menu-item");
-  if (filterButtons.length === 0 || menuItems.length === 0) return;
-
+  if (!filterButtons.length || !menuItems.length) return;
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       filterButtons.forEach((btn) => btn.classList.remove("active"));
@@ -291,61 +432,8 @@ function setupVideoLinks() {
       navigator.userAgent
     );
   document.querySelectorAll(".video-link").forEach((link) => {
-    if (!isMobile) link.setAttribute("target", "_blank");
-  });
-}
-
-/**
- * Sets up and manages the "Feature Unavailable" modal.
- */
-function setupUnavailableFeatureModal() {
-  const modal = document.getElementById("unavailable-modal");
-  if (!modal) return;
-
-  const closeModalBtn = modal.querySelector(".modal-close");
-  const form = document.getElementById("reservation-form");
-
-  // Elements that will trigger the modal
-  const triggers = [
-    ...form.querySelectorAll("input"),
-    form.querySelector(".form-submit-btn"),
-    ...document.querySelectorAll(".delivery-btn"),
-  ];
-
-  const validTriggers = triggers.filter((el) => el !== null);
-
-  const showModal = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-    setTimeout(() => modal.classList.add("visible"), 10);
-  };
-
-  const hideModal = () => {
-    modal.classList.remove("visible");
-    document.body.style.overflow = "";
-    const onTransitionEnd = () => {
-      modal.hidden = true;
-      modal.removeEventListener("transitionend", onTransitionEnd);
-    };
-    modal.addEventListener("transitionend", onTransitionEnd);
-  };
-
-  validTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", showModal);
-  });
-
-  closeModalBtn.addEventListener("click", hideModal);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      hideModal();
-    }
-  });
-
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("visible")) {
-      hideModal();
+    if (isMobile) {
+      link.removeAttribute("target");
     }
   });
 }

@@ -184,7 +184,8 @@
           Slow-cooked with fragrant rice, the finest ingredients, and our secret
           spice blend. A taste of tradition in every bite.
         </p>
-        <div class="cta-buttons">
+        <!-- Reservation CTA (Deactivated) -->
+        <!-- <div class="cta-buttons">
           <a
             href="#delivery"
             class="cta primary-cta"
@@ -195,6 +196,20 @@
             class="cta secondary-cta"
             title="Click to go to the table reservation form"
             >Reserve Your Table</a
+          >
+        </div> -->
+        <div class="cta-buttons">
+          <a
+            href="#lucky-draw"
+            class="cta primary-cta"
+            title="Click to enter the lucky draw for a chance to win!"
+            >Enter Lucky Draw</a
+          >
+          <a
+            href="#delivery"
+            class="cta secondary-cta"
+            title="Click to view our delivery partners"
+            >Order Online Now</a
           >
         </div>
       </div>
@@ -285,43 +300,94 @@
       <section id="reservations" class="content-section">
         <h2 class="section-title">Ready for Biryani?</h2>
         <div class="reservation-delivery-grid">
+          <!-- Lucky Draw Form (Temporary) -->
+          <!-- To disable this form, comment out the entire 'div' with id="lucky-draw" -->
+          <div id="lucky-draw" class="form-container">
+            <h3>Enter the Lucky Draw</h3>
+            <form id="lucky-draw-form" novalidate>
+              <div class="form-group">
+                <label for="lucky-draw-name">Full Name</label>
+                <input
+                  type="text"
+                  id="lucky-draw-name"
+                  name="fullName"
+                  placeholder="Enter your full name"
+                  title="Please enter your full name"
+                  required />
+                <div class="form-error-message" aria-live="polite"></div>
+              </div>
+              <div class="form-group">
+                <label for="mobile-number">Mobile Number</label>
+                <input
+                  type="tel"
+                  id="mobile-number"
+                  name="mobileNumber"
+                  placeholder="Enter your mobile number"
+                  title="Please enter your 10-digit mobile number"
+                  required />
+                <div class="form-error-message" aria-live="polite"></div>
+              </div>
+              <div class="form-group">
+                <label for="coupon-code">Coupon Code</label>
+                <input
+                  type="text"
+                  id="coupon-code"
+                  name="couponCode"
+                  placeholder="Enter your coupon code"
+                  title="Please enter the coupon code from your bill"
+                  required />
+                <div class="form-error-message" aria-live="polite"></div>
+              </div>
+              <button
+                type="submit"
+                class="cta primary-cta form-submit-btn"
+                title="Click to submit your entry for a chance to win!">
+                Enter to Win!
+              </button>
+            </form>
+          </div>
+          <!-- End of Lucky Draw Form -->
+
+          <!-- Reservation Form (Deactivated) -->
+          <!-- To re-enable this form, uncomment this block and comment out the Lucky Draw form -->
+          <!--
           <div class="form-container">
             <h3>Reserve Your Table</h3>
             <form id="reservation-form" novalidate>
               <div class="form-group">
-                <label for="name">Full Name</label
-                ><input
+                <label for="name">Full Name</label>
+                <input
                   type="text"
                   id="name"
                   name="name"
                   placeholder="Enter your name"
                   title="Please enter your full name"
-                  disabled
                   required />
+                <div class="form-error-message" aria-live="polite"></div>
               </div>
               <div class="form-group">
-                <label for="date">Select Date</label
-                ><input
+                <label for="date">Select Date</label>
+                <input
                   type="date"
                   id="date"
                   name="date"
                   title="Select the desired date for your reservation"
-                  disabled
                   required />
+                <div class="form-error-message" aria-live="polite"></div>
               </div>
               <div class="form-group">
-                <label for="time">Choose Time</label
-                ><input
+                <label for="time">Choose Time</label>
+                <input
                   type="time"
                   id="time"
                   name="time"
                   title="Choose a time for your arrival"
-                  disabled
                   required />
+                <div class="form-error-message" aria-live="polite"></div>
               </div>
               <div class="form-group">
-                <label for="guests">Number of Guests</label
-                ><input
+                <label for="guests">Number of Guests</label>
+                <input
                   type="number"
                   id="guests"
                   name="guests"
@@ -329,8 +395,8 @@
                   max="15"
                   placeholder="e.g., 4"
                   title="Enter the number of people in your party (1-15)"
-                  disabled
                   required />
+                <div class="form-error-message" aria-live="polite"></div>
               </div>
               <button
                 type="submit"
@@ -340,6 +406,9 @@
               </button>
             </form>
           </div>
+          -->
+          <!-- End of Reservation Form -->
+
           <div id="delivery" class="delivery-container">
             <h3>Order for Delivery</h3>
             <p>
@@ -350,14 +419,16 @@
               <a
                 href="#"
                 class="delivery-btn"
-                title="Order delivery from Nana'S Biryani Mall via Zomato"
+                data-modal-trigger="unavailable-modal"
+                title="Get your biryani delivered: Order with Zomato"
                 ><img src="assets/icons/zomato.svg" alt="Zomato Logo" /><span
                   >Order via Zomato</span
                 ></a
               ><a
                 href="#"
                 class="delivery-btn"
-                title="Order delivery from Nana'S Biryani Mall via Swiggy"
+                data-modal-trigger="unavailable-modal"
+                title="Get your biryani delivered: Order with Swiggy"
                 ><img src="assets/icons/swiggy.svg" alt="Swiggy Logo" /><span
                   >Order via Swiggy</span
                 ></a
@@ -379,7 +450,7 @@
           </p>
           <div class="social-icons">
             <a
-              href="https://instagram.com/Nana'S Biryani Mallin"
+              href="https://instagram.com/biryanimallin"
               aria-label="Follow us on Instagram"
               title="Visit our Instagram page"
               target="_blank"
@@ -389,7 +460,7 @@
                 alt="Instagram"
             /></a>
             <a
-              href="https://www.youtube.com/@Nana'S Biryani Mallin"
+              href="https://www.youtube.com/@biryanimallin"
               aria-label="Subscribe on YouTube"
               title="Watch our videos on YouTube"
               target="_blank"
@@ -438,9 +509,7 @@
             >
           </p>
           <p>
-            <a
-              href="mailto:Nana'S Biryani Mall.in@gmail.com"
-              title="Send us an email"
+            <a href="mailto:biryanimall.in@gmail.com" title="Send us an email"
               ><span class="material-symbols-outlined">email</span
               >biryanimall.in@gmail.com</a
             >
@@ -452,13 +521,15 @@
       </div>
     </footer>
 
+    <!-- MODALS -->
+
     <!-- Unavailable Feature Modal -->
     <div
       id="unavailable-modal"
       class="modal-overlay"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="modal-title"
+      aria-labelledby="unavailable-modal-title"
       hidden>
       <div class="modal-content">
         <button
@@ -467,7 +538,9 @@
           title="Close this window">
           ×
         </button>
-        <h3 id="modal-title" class="modal-title">Online Service Unavailable</h3>
+        <h3 id="unavailable-modal-title" class="modal-title">
+          Online Service Unavailable
+        </h3>
         <p class="modal-body">
           We apologize, but this feature is not active at the moment. We are
           working to bring it to you soon!
@@ -495,6 +568,32 @@
             <span>Pundalik Nagar, Near Chatrapati Shivaji Maharaj Statue</span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Submission Success Modal (For Lucky Draw) -->
+    <div
+      id="submission-success-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="success-modal-title"
+      hidden>
+      <div class="modal-content">
+        <button
+          class="modal-close"
+          aria-label="Close modal"
+          title="Close this window">
+          ×
+        </button>
+        <h3 id="success-modal-title" class="modal-title">
+          Registration Successful!
+        </h3>
+        <p class="modal-body">
+          Please ensure the email has been sent from your mail app to finalize
+          your entry. You should receive an automatic reply within a few
+          minutes. If you don't see it, please try again later.
+        </p>
       </div>
     </div>
   </body>
